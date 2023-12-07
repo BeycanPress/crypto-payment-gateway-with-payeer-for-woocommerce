@@ -147,7 +147,7 @@ class Gateway extends \WC_Payment_Gateway
      */
     public function payment_fields() : void
     {
-        echo $this->description;
+        echo esc_html($this->description);
         ?>
         <br>
         <div class="py-footer">
