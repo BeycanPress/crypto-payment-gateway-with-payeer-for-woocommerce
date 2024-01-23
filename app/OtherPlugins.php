@@ -35,7 +35,7 @@ class OtherPlugins
      */
     public function page() : void
     {
-        $res = file_get_contents($this->apiUrl . 'general-products');
+        $res = wp_remote_retrieve_body(wp_remote_get($this->apiUrl . 'general-products'));
         $res = json_decode(str_replace(['<p>', '</p>'], '', $res));
         $plugins = $res->data->products;
         
