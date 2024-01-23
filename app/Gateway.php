@@ -4,16 +4,15 @@ namespace BeycanPress\Payeer;
 
 class Gateway extends \WC_Payment_Gateway
 {   
+    /**
+     * @var string
+     */
+    public const ID = 'payeer_gateway';
 
     /**
      * @var string
      */
     private $payeerUrl = 'https://payeer.com/merchant/';
-
-    /**
-     * @var string
-     */
-    public static $gateway = 'payeer_gateway';
 
     /**
      * @var string
@@ -30,7 +29,7 @@ class Gateway extends \WC_Payment_Gateway
      */
     public function __construct()
     {
-        $this->id = self::$gateway;
+        $this->id = self::ID;
         $this->method_title = esc_html__('Payeer', 'payeer_gateway');
         $this->method_description = esc_html__('Payeer payment gateway', 'payeer_gateway');
 
@@ -130,7 +129,7 @@ class Gateway extends \WC_Payment_Gateway
      */
     public static function get_option_custom(string $key) : ?string
     {
-        $options = get_option('woocommerce_'.self::$gateway.'_settings');
+        $options = get_option('woocommerce_'.self::ID.'_settings');
         return isset($options[$key]) ? $options[$key] : null;
     }
 
@@ -140,6 +139,13 @@ class Gateway extends \WC_Payment_Gateway
     public function get_icon() : string
     {
         return '<img src="'.plugins_url('assets/images/payeer.png', dirname(__FILE__)).'" alt="Payeer" />';
+    }
+
+    public function getPaymentFields() : string
+    {
+        ob_start();
+        $this->payment_fields();
+        return ob_get_clean();
     }
 
     /**
