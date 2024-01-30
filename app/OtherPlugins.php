@@ -1,26 +1,31 @@
-<?php 
+<?php
+
+declare(strict_types=1);
+
+// @phpcs:disable Generic.Files.LineLength
+// @phpcs:disable Generic.Files.InlineHTML
 
 namespace BeycanPress\Payeer;
 
 class OtherPlugins
-{   
+{
     /**
      * @var string
      */
-    private $apiUrl = 'https://beycanpress.com/wp-json/bp-api/';
-    
+    private string $apiUrl = 'https://beycanpress.com/wp-json/bp-api/';
+
     /**
-     * Class construct
+     * @param string $pluginFile
      * @return void
      */
     public function __construct(string $pluginFile)
     {
         if (!isset($GLOBALS['admin_page_hooks']['beycanpress-plugins'])) {
-            add_action('admin_menu', function() use ($pluginFile) {
-                add_menu_page( 
+            add_action('admin_menu', function () use ($pluginFile): void {
+                add_menu_page(
                     esc_html__('BeycanPress Plugins', 'payeer_gateway'),
                     esc_html__('BeycanPress Plugins', 'payeer_gateway'),
-                    'manage_options', 
+                    'manage_options',
                     'beycanpress-plugins',
                     [$this, 'page'],
                     plugin_dir_url($pluginFile) . 'assets/images/beycanpress.png',
@@ -33,12 +38,11 @@ class OtherPlugins
     /**
      * @return void
      */
-    public function page() : void
+    public function page(): void
     {
         $res = wp_remote_retrieve_body(wp_remote_get($this->apiUrl . 'general-products'));
         $res = json_decode(str_replace(['<p>', '</p>'], '', $res));
         $plugins = $res->data->products;
-        
         ?>
         <div class="wrap">
             <h1 class="wp-heading-inline">

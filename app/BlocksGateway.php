@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BeycanPress\Payeer;
 
 use Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodType;
@@ -9,22 +11,25 @@ class BlocksGateway extends AbstractPaymentMethodType
     /**
      * @var Gateway
      */
+    // @phpcs:ignore
     private $gateway;
 
     /**
      * @var string
      */
+    // @phpcs:ignore
     protected $name;
 
     /**
      * @var array<string,mixed>
      */
+    // @phpcs:ignore
     protected $settings = [];
 
     /**
      * @var string
      */
-    private $scriptId = 'payeer-blocks';
+    private string $scriptId = 'payeer-blocks';
 
     /**
      * @return void
@@ -47,6 +52,7 @@ class BlocksGateway extends AbstractPaymentMethodType
     /**
      * @return bool
      */
+    // @phpcs:ignore
     public function is_active(): bool
     {
         return $this->gateway->is_available();
@@ -55,6 +61,7 @@ class BlocksGateway extends AbstractPaymentMethodType
     /**
      * @return array<string,mixed>
      */
+    // @phpcs:ignore
     public function get_payment_method_data(): array
     {
         return [
@@ -70,6 +77,7 @@ class BlocksGateway extends AbstractPaymentMethodType
     /**
      * @return array<array<string,string>>
      */
+    // @phpcs:ignore
     public function get_payment_method_icons(): array
     {
         return [
@@ -84,6 +92,7 @@ class BlocksGateway extends AbstractPaymentMethodType
     /**
      * @return array<string>
      */
+    // @phpcs:ignore
     public function get_payment_method_script_handles(): array
     {
         wp_register_script(

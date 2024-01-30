@@ -1,35 +1,45 @@
-<?php 
+<?php
+
+declare(strict_types=1);
 
 namespace BeycanPress\Payeer;
 
 class Callback
-{   
+{
     /**
      * @var object
      */
-    private $order;
+    private object $order;
 
     /**
      * @return void
      */
-    public function init()
+    public function init(): void
     {
         // params
-        $action  = isset($_GET['action']) ? $_GET['action'] : null;
-        $shopId  = isset($_GET['m_shop']) ? $_GET['m_shop'] : null;
         $orderId = isset($_GET['m_orderid']) ? absint($_GET['m_orderid']) : 0;
-        $amount  = isset($_GET['m_amount']) ? $_GET['m_amount'] : null;
-        $desc    = isset($_GET['m_desc']) ? $_GET['m_desc'] : null;
-        $curr    = isset($_GET['m_curr']) ? $_GET['m_curr'] : null;
-        $status  = isset($_GET['m_status']) ? $_GET['m_status'] : null;
-        $sign    = isset($_GET['m_sign']) ? $_GET['m_sign'] : null;
+        $amount  = isset($_GET['m_amount']) ? floatval($_GET['m_amount']) : null;
+        $action  = isset($_GET['action']) ? sanitize_text_field($_GET['action']) : null;
+        $shopId  = isset($_GET['m_shop']) ? sanitize_text_field($_GET['m_shop']) : null;
+        $desc    = isset($_GET['m_desc']) ? sanitize_text_field($_GET['m_desc']) : null;
+        $curr    = isset($_GET['m_curr']) ? sanitize_text_field($_GET['m_curr']) : null;
+        $sign    = isset($_GET['m_sign']) ? sanitize_text_field($_GET['m_sign']) : null;
+        $status  = isset($_GET['m_status']) ? sanitize_text_field($_GET['m_status']) : null;
 
         // operation params
-        $operationId      = isset($_GET['m_operation_id']) ? $_GET['m_operation_id'] : null;
-        $operationPs      = isset($_GET['m_operation_ps']) ? $_GET['m_operation_ps'] : null;
-        $operationDate    = isset($_GET['m_operation_date']) ? $_GET['m_operation_date'] : null;
-        $operationPayDate = isset($_GET['m_operation_pay_date']) ? $_GET['m_operation_pay_date'] : null;
-        
+        $operationId      = isset($_GET['m_operation_id']) ?
+        sanitize_text_field($_GET['m_operation_id']) : null;
+
+        $operationPs      = isset($_GET['m_operation_ps']) ?
+        sanitize_text_field($_GET['m_operation_ps']) : null;
+
+        $operationDate    = isset($_GET['m_operation_date']) ?
+        sanitize_text_field($_GET['m_operation_date']) : null;
+
+        $operationPayDate = isset($_GET['m_operation_pay_date']) ?
+        sanitize_text_field($_GET['m_operation_pay_date']) : null;
+
+
         if (!$this->order = wc_get_order($orderId)) {
             exit(wp_redirect(home_url()));
         }
@@ -74,7 +84,7 @@ class Callback
     /**
      * @return void
      */
-    public function updateOrderAsComplete() : void
+    public function updateOrderAsComplete(): void
     {
         global $woocommerce;
 
@@ -84,11 +94,11 @@ class Callback
         } else {
             $note = esc_html__('Your order is processing.', 'payeer_gateway');
         }
-        
+
         $this->order->payment_complete();
 
         $this->order->update_status($completeStatus, $note);
-        
+
         // Remove cart
         $woocommerce->cart->empty_cart();
 
@@ -98,11 +108,11 @@ class Callback
     /**
      * @return void
      */
-    public function updateOrderAsFail() : void
+    public function updateOrderAsFail(): void
     {
         $this->order->update_status('wc-failed', esc_html__('Payment is failed!', 'payeer_gateway'));
-        
-		wc_add_notice(esc_html__('Payment is failed!', 'payeer_gateway'), 'error');
+
+        wc_add_notice(esc_html__('Payment is failed!', 'payeer_gateway'), 'error');
 
         exit(wp_redirect(wc_get_checkout_url()));
     }

@@ -1,9 +1,13 @@
-<?php 
+<?php
+
+declare(strict_types=1);
+
+// @phpcs:disable Generic.Files.LineLength
 
 namespace BeycanPress\Payeer;
 
 class Gateway extends \WC_Payment_Gateway
-{   
+{
     /**
      * @var string
      */
@@ -12,18 +16,72 @@ class Gateway extends \WC_Payment_Gateway
     /**
      * @var string
      */
-    private $payeerUrl = 'https://payeer.com/merchant/';
+    private string $payeerUrl = 'https://payeer.com/merchant/';
 
     /**
      * @var string
      */
-    private $payeer_merchant;
+    private string $payeer_merchant;
 
     /**
      * @var string
      */
-    private $payeer_secret_key;
-    
+    private string $payeer_secret_key;
+
+    /**
+     * @var string
+     */
+    // @phpcs:ignore
+    public $id;
+
+    /**
+     * @var string
+     */
+    // @phpcs:ignore
+    public $method_title;
+
+    /**
+     * @var string
+     */
+    // @phpcs:ignore
+    public $method_description;
+
+    /**
+     * @var string
+     */
+    // @phpcs:ignore
+    public $title;
+
+    /**
+     * @var string
+     */
+    // @phpcs:ignore
+    public $description;
+
+    /**
+     * @var string
+     */
+    // @phpcs:ignore
+    public $enabled;
+
+    /**
+     * @var string
+     */
+    // @phpcs:ignore
+    public $order_button_text;
+
+    /**
+     * @var array<string>
+     */
+    // @phpcs:ignore
+    public $supports;
+
+    /**
+     * @var array<mixed>
+     */
+    // @phpcs:ignore
+    public $form_fields;
+
     /**
      * @return void
      */
@@ -56,7 +114,8 @@ class Gateway extends \WC_Payment_Gateway
     /**
      * @return void
      */
-    public function init_form_fields() : void
+    // @phpcs:ignore
+    public function init_form_fields(): void
     {
         $this->form_fields = array(
             'enabled' => array(
@@ -127,21 +186,26 @@ class Gateway extends \WC_Payment_Gateway
      * @param string $key
      * @return string|null
      */
-    public static function get_option_custom(string $key) : ?string
+    // @phpcs:ignore
+    public static function get_option_custom(string $key): ?string
     {
-        $options = get_option('woocommerce_'.self::ID.'_settings');
+        $options = get_option('woocommerce_' . self::ID . '_settings');
         return isset($options[$key]) ? $options[$key] : null;
     }
 
     /**
      * @return mixed
      */
+    // @phpcs:ignore
     public function get_icon() : string
     {
-        return '<img src="'.plugins_url('assets/images/payeer.png', dirname(__FILE__)).'" alt="Payeer" />';
+        return '<img src="' . plugins_url('assets/images/payeer.png', dirname(__FILE__)) . '" alt="Payeer" />';
     }
 
-    public function getPaymentFields() : string
+    /**
+     * @return string
+     */
+    public function getPaymentFields(): string
     {
         ob_start();
         $this->payment_fields();
@@ -151,8 +215,10 @@ class Gateway extends \WC_Payment_Gateway
     /**
      * @return void
      */
-    public function payment_fields() : void
+    // @phpcs:ignore
+    public function payment_fields(): void
     {
+        // @phpcs:disable
         echo esc_html($this->description);
         ?>
         <br>
@@ -163,16 +229,18 @@ class Gateway extends \WC_Payment_Gateway
             <a href="https://beycanpress.com/cryptopay?utm_source=payeer_plugin&amp;utm_medium=powered_by" target="_blank">CryptoPay</a>
         </div>
         <?php
+        // @phpcs:enable
     }
 
     /**
      * @param int $orderId
-     * @return array
+     * @return array<string,string>
      */
-    public function process_payment($orderId) : array
+    // @phpcs:ignore
+    public function process_payment($orderId): array
     {
         $order = new \WC_Order($orderId);
-        
+
         $order = wc_get_order($orderId);
         $desc = base64_encode($order->get_customer_note());
         $amount = number_format($order->get_total(), 2, '.', '');
@@ -200,12 +268,17 @@ class Gateway extends \WC_Payment_Gateway
 
         $order->update_status('wc-pending', esc_html__('Payment is awaited.', 'payeer_gateway'));
 
-        $order->add_order_note(esc_html__('Customer has chosen Payeer payment method, payment is pending.', 'payeer_gateway'));
+        $order->add_order_note(
+            esc_html__(
+                'Customer has chosen Payeer payment method, payment is pending.',
+                'payeer_gateway'
+            )
+        );
 
         // Return thankyou redirect
         return array(
             'result' => 'success',
             'redirect' => $url
-        );  
+        );
     }
 }
