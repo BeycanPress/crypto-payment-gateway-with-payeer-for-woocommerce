@@ -84,7 +84,7 @@ class BlocksGateway extends AbstractPaymentMethodType
             [
                 'id'  => $this->name,
                 'alt' => $this->get_setting('title'),
-                'src' => PAYEER_GATEWAY_URL . 'assets/images/payeer.png'
+                'src' => BP_PAYEER_GATEWAY_URL . 'assets/images/payeer.png'
             ]
         ];
     }
@@ -97,9 +97,9 @@ class BlocksGateway extends AbstractPaymentMethodType
     {
         wp_register_script(
             $this->scriptId,
-            PAYEER_GATEWAY_URL . 'assets/js/blocks.js',
+            BP_PAYEER_GATEWAY_URL . 'assets/js/blocks.js',
             [],
-            PAYEER_GATEWAY_VERSION,
+            BP_PAYEER_GATEWAY_VERSION,
             true
         );
 
@@ -114,9 +114,9 @@ class BlocksGateway extends AbstractPaymentMethodType
         if (wp_script_is($this->scriptId, 'registered')) {
             wp_enqueue_style(
                 $this->scriptId,
-                PAYEER_GATEWAY_URL . 'assets/css/blocks.css',
+                BP_PAYEER_GATEWAY_URL . 'assets/css/blocks.css',
                 [],
-                PAYEER_GATEWAY_VERSION
+                BP_PAYEER_GATEWAY_VERSION
             );
         }
     }

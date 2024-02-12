@@ -9,7 +9,7 @@ defined('ABSPATH') || exit;
 // @phpcs:disable Generic.Files.LineLength
 
 /**
- * Plugin Name: Payeer for WooCommerce
+ * Plugin Name: Pay with Payeer for WooCommerce
  * Version:     1.0.1
  * Plugin URI:  https://beycanpress.com/
  * Description: Payeer payment gateway for WooCommerce
@@ -27,9 +27,9 @@ defined('ABSPATH') || exit;
 
 require __DIR__ . '/vendor/autoload.php';
 
-define('PAYEER_GATEWAY_VERSION', '1.0.1');
-define('PAYEER_GATEWAY_URL', plugin_dir_url(__FILE__));
-define('PAYEER_GATEWAY_PATH', plugin_dir_path(__FILE__));
+define('BP_PAYEER_GATEWAY_VERSION', '1.0.1');
+define('BP_PAYEER_GATEWAY_URL', plugin_dir_url(__FILE__));
+define('BP_PAYEER_GATEWAY_PATH', plugin_dir_path(__FILE__));
 
 new BeycanPress\Payeer\OtherPlugins(__FILE__);
 
