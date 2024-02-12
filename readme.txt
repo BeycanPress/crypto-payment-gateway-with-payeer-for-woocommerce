@@ -45,7 +45,7 @@ You can easily translate with Loco translate.
 
 == Installation ==
 
-1. Upload the entire `/payeer-pay-for-woocommerce` directory to the `/wp-content/plugins/` directory.
+1. Upload the entire `/pay-with-payeer-for-woocommerce` directory to the `/wp-content/plugins/` directory.
 2. Activate Payeer for WooCommerce through the 'Plugins' menu in WordPress.
 3. Enjoy.
 
