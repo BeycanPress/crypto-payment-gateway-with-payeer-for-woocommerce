@@ -1,4 +1,4 @@
-=== Payeer Payment Gateway for WooCommerce ===
+=== Pay with Payeer for WooCommerce ===
 Contributors: BeycanPress
 Tags: woocommerce, payment gateway, payeer, crypto, cryptocurrency, crypto payment, crypto payment gateway, crypto payment
 Requires at least: 5.0
@@ -9,11 +9,11 @@ Version: 1.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Payeer Payment Gateway for WooCommerce, Cryptocurrency Payment Gateway for WooCommerce, Crypto Payments, Bitcoin, USDT, USDC, TUSD, BNB, BTC, ETH
+Pay with Payeer for WooCommerce, Payeer payment gateway, Cryptocurrency Payment Gateway for WooCommerce, Crypto Payments, Bitcoin, USDT, USDC, TUSD, BNB, BTC, ETH
 
 == Description ==
 
-**What is Payeer Payment Gateway for WooCommerce**
+**What is Pay with Payeer for WooCommerce**
 
 Payeer is a kind of online wallet where you can hold Crypto currencies along with FIAT currencies.
 
