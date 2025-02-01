@@ -55,6 +55,7 @@ class BlocksGateway extends AbstractPaymentMethodType
     // @phpcs:ignore
     public function is_active(): bool
     {
+        /** @disregard */
         return $this->gateway->is_available();
     }
 
@@ -64,6 +65,7 @@ class BlocksGateway extends AbstractPaymentMethodType
     // @phpcs:ignore
     public function get_payment_method_data(): array
     {
+        /** @disregard */
         return [
             'name'     => $this->name,
             'label'    => $this->get_setting('title'),
@@ -80,6 +82,7 @@ class BlocksGateway extends AbstractPaymentMethodType
     // @phpcs:ignore
     public function get_payment_method_icons(): array
     {
+        /** @disregard */
         return [
             [
                 'id'  => $this->name,

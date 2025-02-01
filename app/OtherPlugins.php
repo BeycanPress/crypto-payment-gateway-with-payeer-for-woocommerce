@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 // @phpcs:disable Generic.Files.LineLength
 // @phpcs:disable Generic.Files.InlineHTML
+// @phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage
 
 namespace BeycanPress\Payeer;
 
@@ -23,8 +24,8 @@ class OtherPlugins
         if (!isset($GLOBALS['admin_page_hooks']['beycanpress-plugins'])) {
             add_action('admin_menu', function () use ($pluginFile): void {
                 add_menu_page(
-                    esc_html__('BeycanPress Plugins', 'payeer_gateway'),
-                    esc_html__('BeycanPress Plugins', 'payeer_gateway'),
+                    esc_html__('BeycanPress Plugins', 'pay-with-payeer-for-woocommerce'),
+                    esc_html__('BeycanPress Plugins', 'pay-with-payeer-for-woocommerce'),
                     'manage_options',
                     'beycanpress-plugins',
                     [$this, 'page'],
@@ -43,10 +44,17 @@ class OtherPlugins
         $res = wp_remote_retrieve_body(wp_remote_get($this->apiUrl . 'get-plugins'));
         $res = json_decode(str_replace(['<p>', '</p>'], '', $res));
         $plugins = $res->data->plugins;
+        \wp_enqueue_style(
+            'bp-payeer-gateway-plugins',
+            plugin_dir_url(__DIR__) . 'assets/css/admin.css',
+            [],
+            '1.0.0',
+            'all'
+        );
         ?>
         <div class="wrap">
             <h1 class="wp-heading-inline">
-                <?php echo esc_html__('BeycanPress Plugins', 'payeer_gateway'); ?>
+                <?php echo esc_html__('BeycanPress Plugins', 'pay-with-payeer-for-woocommerce'); ?>
             </h1>
             <hr class="wp-header-end">
             <br>
@@ -65,7 +73,7 @@ class OtherPlugins
                                         </li>
                                     <?php endforeach;
                                 else :
-                                    echo esc_html__('No product found!');
+                                    echo esc_html__('No product found!', 'pay-with-payeer-for-woocommerce');
                                 endif; ?>
                             </ul>
                         </div>
@@ -73,50 +81,6 @@ class OtherPlugins
                 </div>
             </div>
         </div>
-
-        <style>
-            .product-list {
-                display: flex;
-                flex-wrap: wrap;
-                list-style: none;
-                padding: 0;
-                margin: 0;
-            }
-
-            .product-list li {
-                width: 20%;
-                padding: 10px;
-                box-sizing: border-box;
-            }
-
-            .product-list li a {
-                display: block;
-                text-align: center;
-                text-decoration: none;
-                color: #333;
-            }
-
-            .product-list li a img {
-                width: 100%;
-                height: auto;
-                border-radius: 5px;
-                margin-bottom: 10px;
-            }
-
-            @media screen and (max-width: 768px) {
-                .product-list li {
-                    width: 50%;
-                }
-                
-            }
-
-            @media screen and (max-width: 400px) {
-                .product-list li {
-                    width: 100%;
-                }
-                
-            }
-        </style>
         <?php
     }
 }

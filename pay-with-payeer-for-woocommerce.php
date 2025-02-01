@@ -17,11 +17,11 @@ defined('ABSPATH') || exit;
  * Author URI:  https://beycanpress.com
  * License:     GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain: payeer_gateway
+ * Text Domain: pay-with-payeer-for-woocommerce
  * Domain Path: /languages
- * Tags: Payeer, Cryptocurrency, WooCommerce, WordPress, Ethereum, Bitcoin, Payment, Plugin, Gateway
+ * Tags: Payeer, Cryptocurrency, WooCommerce, Payment, Gateway
  * Requires at least: 5.0
- * Tested up to: 6.4.2
+ * Tested up to: 6.7.1
  * Requires PHP: 7.4
 */
 

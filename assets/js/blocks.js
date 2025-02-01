@@ -1,5 +1,5 @@
 (() => {
-    const settings = wc.wcSettings.getSetting('payeer_gateway_data', {});
+    const settings = wc.wcSettings.getSetting('bp_payeer_gateway_data', {});
     const { registerPaymentMethod } = window.wc.wcBlocksRegistry;
     const createElement = window.wp.element.createElement;
     const { decodeEntities } = window.wp.htmlEntities;

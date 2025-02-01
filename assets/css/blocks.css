@@ -1,10 +1,10 @@
-.payeer_gateway-payment-gateway {
+.bp_payeer_gateway-payment-gateway {
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-.payeer_gateway-payment-gateway .wc-block-components-payment-method-icons {
+.bp_payeer_gateway-payment-gateway .wc-block-components-payment-method-icons {
     flex: 1 0 auto;
     display: flex;
     justify-content: flex-end;

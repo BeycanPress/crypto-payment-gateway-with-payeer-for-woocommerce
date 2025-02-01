@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 // @phpcs:disable Generic.Files.LineLength
+// @phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage
 
 namespace BeycanPress\Payeer;
 
@@ -11,7 +12,7 @@ class Gateway extends \WC_Payment_Gateway
     /**
      * @var string
      */
-    public const ID = 'payeer_gateway';
+    public const ID = 'bp_payeer_gateway';
 
     /**
      * @var string
@@ -88,8 +89,8 @@ class Gateway extends \WC_Payment_Gateway
     public function __construct()
     {
         $this->id = self::ID;
-        $this->method_title = esc_html__('Payeer', 'payeer_gateway');
-        $this->method_description = esc_html__('Payeer payment gateway', 'payeer_gateway');
+        $this->method_title = esc_html__('Payeer', 'pay-with-payeer-for-woocommerce');
+        $this->method_description = esc_html__('Payeer payment gateway', 'pay-with-payeer-for-woocommerce');
 
         // gateways can support subscriptions, refunds, saved payment methods,
         // but in this tutorial we begin with simple payments
@@ -99,16 +100,23 @@ class Gateway extends \WC_Payment_Gateway
         $this->init_form_fields();
 
         // Load the settings.
+        /** @disregard */
         $this->init_settings();
+        /** @disregard */
         $this->title = $this->get_option('title');
+        /** @disregard */
         $this->enabled = $this->get_option('enabled');
+        /** @disregard */
         $this->description = $this->get_option('description');
+        /** @disregard */
         $this->order_button_text = $this->get_option('order_button_text');
+        /** @disregard */
         $this->payeer_merchant = $this->get_option('payeer_merchant');
+        /** @disregard */
         $this->payeer_secret_key = $this->get_option('payeer_secret_key');
 
-        add_action('woocommerce_api_payeer-callback', [(new Callback()), 'init']);
-        add_action('woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options'));
+        add_action('woocommerce_api_bp-payeer-gateway-callback', [(new Callback()), 'init']);
+        add_action('woocommerce_update_options_payment_gateways_' . $this->id, [$this, 'process_admin_options']);
     }
 
     /**
@@ -117,69 +125,69 @@ class Gateway extends \WC_Payment_Gateway
     // @phpcs:ignore
     public function init_form_fields(): void
     {
-        $this->form_fields = array(
-            'enabled' => array(
-                'title'       => esc_html__('Enable/Disable', 'payeer_gateway'),
-                'label'       => esc_html__('Enable', 'payeer_gateway'),
+        $this->form_fields = [
+            'enabled' => [
+                'title'       => esc_html__('Enable/Disable', 'pay-with-payeer-for-woocommerce'),
+                'label'       => esc_html__('Enable', 'pay-with-payeer-for-woocommerce'),
                 'type'        => 'checkbox',
                 'default'     => 'no'
-            ),
-            'title' => array(
-                'title'       => esc_html__('Title', 'payeer_gateway'),
+            ],
+            'title' => [
+                'title'       => esc_html__('Title', 'pay-with-payeer-for-woocommerce'),
                 'type'        => 'text',
-                'description' => esc_html__('This controls the title which the user sees during checkout.', 'payeer_gateway'),
-                'default'     => esc_html__('Pay with Payeer', 'payeer_gateway')
-            ),
-            'description' => array(
-                'title'       => esc_html__('Description', 'payeer_gateway'),
+                'description' => esc_html__('This controls the title which the user sees during checkout.', 'pay-with-payeer-for-woocommerce'),
+                'default'     => esc_html__('Pay with Payeer', 'pay-with-payeer-for-woocommerce')
+            ],
+            'description' => [
+                'title'       => esc_html__('Description', 'pay-with-payeer-for-woocommerce'),
                 'type'        => 'textarea',
-                'description' => esc_html__('This controls the description which the user sees during checkout.', 'payeer_gateway'),
-                'default'     => esc_html__('Pay with Payeer', 'payeer_gateway'),
-            ),
-            'order_button_text' => array(
-                'title'       => esc_html__('Order button text', 'payeer_gateway'),
+                'description' => esc_html__('This controls the description which the user sees during checkout.', 'pay-with-payeer-for-woocommerce'),
+                'default'     => esc_html__('Pay with Payeer', 'pay-with-payeer-for-woocommerce'),
+            ],
+            'order_button_text' => [
+                'title'       => esc_html__('Order button text', 'pay-with-payeer-for-woocommerce'),
                 'type'        => 'text',
-                'description' => esc_html__('Pay button on the checkout page', 'payeer_gateway'),
-                'default'     => esc_html__('Pay to Payeer', 'payeer_gateway'),
-            ),
-            'payment_complete_order_status' => array(
-                'title'   => esc_html__('Payment complete order status', 'payeer_gateway'),
+                'description' => esc_html__('Pay button on the checkout page', 'pay-with-payeer-for-woocommerce'),
+                'default'     => esc_html__('Pay to Payeer', 'pay-with-payeer-for-woocommerce'),
+            ],
+            'payment_complete_order_status' => [
+                'title'   => esc_html__('Payment complete order status', 'pay-with-payeer-for-woocommerce'),
                 'type'    => 'select',
-                'help'    => esc_html__('The status to apply for order after payment is complete.', 'payeer_gateway'),
+                'help'    => esc_html__('The status to apply for order after payment is complete.', 'pay-with-payeer-for-woocommerce'),
                 'options' => [
-                    'wc-completed' => esc_html__('Completed', 'payeer_gateway'),
-                    'wc-processing' => esc_html__('Processing', 'payeer_gateway')
+                    'wc-completed' => esc_html__('Completed', 'pay-with-payeer-for-woocommerce'),
+                    'wc-processing' => esc_html__('Processing', 'pay-with-payeer-for-woocommerce')
                 ],
                 'default' => 'wc-completed',
-            ),
-            'payeer_merchant' => array(
-                'title' => esc_html__('ID of the store', 'payeer_gateway'),
+            ],
+            'payeer_merchant' => [
+                'title' => esc_html__('ID of the store', 'pay-with-payeer-for-woocommerce'),
                 'type' => 'text',
-                'description' => esc_html__('Identifier of store registered in the system "PAYEER" Get it in "Account -> Merchant -> Settings".', 'payeer_gateway'),
+                'description' => esc_html__('Identifier of store registered in the system "PAYEER" Get it in "Account -> Merchant -> Settings".', 'pay-with-payeer-for-woocommerce'),
                 'default' => ''
-            ),
-            'payeer_secret_key' => array(
-                'title' => esc_html__('Secret key', 'payeer_gateway'),
+            ],
+            'payeer_secret_key' => [
+                'title' => esc_html__('Secret key', 'pay-with-payeer-for-woocommerce'),
                 'type' => 'password',
-                'description' => esc_html__('The secret key notification that payment has been made,which is used to check the integrity of received information and unequivocal identification of the sender. Must match the secret key specified in : the "Account -> Merchant -> Settings".', 'payeer_gateway'),
+                'description' => esc_html__('The secret key notification that payment has been made,which is used to check the integrity of received information and unequivocal identification of the sender. Must match the secret key specified in : the "Account -> Merchant -> Settings".', 'pay-with-payeer-for-woocommerce'),
                 'default' => ''
-            ),
-            'payeer_success_url' => array(
-                'title'       => home_url('wc-api/payeer-callback?action=success'),
+            ],
+            'payeer_success_url' => [
+                'title'       => home_url('wc-api/bp-payeer-gateway-callback?action=success'),
                 'type'        => 'title',
-                'description' => esc_html__('You need to enter this URL in the "Success URL" field in your merchant settings. ', 'payeer_gateway'),
-            ),
-            'payeer_fail_url' => array(
-                'title'       => home_url('wc-api/payeer-callback?action=fail'),
+                'description' => esc_html__('You need to enter this URL in the "Success URL" field in your merchant settings. ', 'pay-with-payeer-for-woocommerce'),
+            ],
+            'payeer_fail_url' => [
+                'title'       => home_url('wc-api/bp-payeer-gateway-callback?action=fail'),
                 'type'        => 'title',
-                'description' => esc_html__('You need to enter this URL in the "Fail URL" field in your merchant settings.', 'payeer_gateway'),
-            ),
-            'payeer_status_url' => array(
-                'title'       => home_url('wc-api/payeer-callback?action=status'),
+                'description' => esc_html__('You need to enter this URL in the "Fail URL" field in your merchant settings.', 'pay-with-payeer-for-woocommerce'),
+            ],
+            'payeer_status_url' => [
+                'title'       => home_url('wc-api/bp-payeer-gateway-callback?action=status'),
                 'type'        => 'title',
-                'description' => esc_html__('You need to enter this URL in the "Status URL" field in your merchant settings.', 'payeer_gateway'),
-            ),
-        );
+                'description' => esc_html__('You need to enter this URL in the "Status URL" field in your merchant settings.', 'pay-with-payeer-for-woocommerce'),
+            ],
+        ];
     }
 
     /**
@@ -221,13 +229,12 @@ class Gateway extends \WC_Payment_Gateway
         // @phpcs:disable
         echo esc_html($this->description);
         ?>
-        <br>
-        <div class="py-footer">
+        - <span class="py-footer">
             <span class="powered-by">
                 Powered by
             </span>
-            <a href="https://beycanpress.com/cryptopay?utm_source=payeer_plugin&amp;utm_medium=powered_by" target="_blank">CryptoPay</a>
-        </div>
+            <a href="https://beycanpress.com/cryptopay/?utm_source=payeer_plugin&amp;utm_medium=powered_by" target="_blank">CryptoPay</a>
+        </span>
         <?php
         // @phpcs:enable
     }
@@ -243,7 +250,7 @@ class Gateway extends \WC_Payment_Gateway
 
         $order = wc_get_order($orderId);
         $desc = base64_encode($order->get_customer_note());
-        $amount = number_format($order->get_total(), 2, '.', '');
+        $amount = number_format((float) $order->get_total(), 2, '.', '');
         $currency = $order->get_currency();
         $storeId = $this->payeer_merchant;
         $secret = $this->payeer_secret_key;
@@ -266,19 +273,19 @@ class Gateway extends \WC_Payment_Gateway
             'm_sign' => $sign
         ]);
 
-        $order->update_status('wc-pending', esc_html__('Payment is awaited.', 'payeer_gateway'));
+        $order->update_status('wc-pending', esc_html__('Payment is awaited.', 'pay-with-payeer-for-woocommerce'));
 
         $order->add_order_note(
             esc_html__(
                 'Customer has chosen Payeer payment method, payment is pending.',
-                'payeer_gateway'
+                'pay-with-payeer-for-woocommerce'
             )
         );
 
         // Return thankyou redirect
-        return array(
+        return [
             'result' => 'success',
             'redirect' => $url
-        );
+        ];
     }
 }

@@ -1,9 +1,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Payeer for WooCommerce\n"
+"Project-Id-Version: Pay with Payeer for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-10 22:07+0000\n"
+"POT-Creation-Date: 2025-02-01 08:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -13,159 +13,161 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.3; wp-6.1.1\n"
-"X-Domain: payeer_gateway"
+"X-Loco-Version: 2.7.1; wp-6.7.1\n"
+"X-Domain: pay-with-payeer-for-woocommerce"
 
 #. Author of the plugin
 msgid "BeycanPress"
 msgstr ""
 
-#: app/Gateway.php:74
+#: app/OtherPlugins.php:27 app/OtherPlugins.php:28 app/OtherPlugins.php:57
+msgid "BeycanPress Plugins"
+msgstr ""
+
+#: app/Gateway.php:158
 msgid "Completed"
 msgstr ""
 
-#: app/Gateway.php:176
+#: app/Gateway.php:280
 msgid "Customer has chosen Payeer payment method, payment is pending."
 msgstr ""
 
-#: app/Gateway.php:58
+#: app/Gateway.php:142
 msgid "Description"
 msgstr ""
 
-#: app/Gateway.php:47
+#: app/Gateway.php:131
 msgid "Enable"
 msgstr ""
 
-#: app/Gateway.php:46
+#: app/Gateway.php:130
 msgid "Enable/Disable"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://beycanpress.com"
 msgstr ""
 
 #. URI of the plugin
 msgid "https://beycanpress.com/"
 msgstr ""
 
-#. Author URI of the plugin
-msgid "https://www.beycanpress.com"
-msgstr ""
-
-#: app/Gateway.php:86
+#: app/Gateway.php:164
 msgid "ID of the store"
 msgstr ""
 
-#: app/Gateway.php:88
+#: app/Gateway.php:166
 msgid ""
-"Identifier of store registered in the system \"PAYEER\".<br/>Get it in <a "
-"href=\"https://payeer.com/account/\">Payeer account</a>: the \"Account -> "
-"Merchant -> Settings\"."
+"Identifier of store registered in the system \"PAYEER\" Get it in \"Account -"
+"> Merchant -> Settings\"."
 msgstr ""
 
-#: app/Gateway.php:64
+#: app/OtherPlugins.php:76
+msgid "No product found!"
+msgstr ""
+
+#: app/Gateway.php:148
 msgid "Order button text"
 msgstr ""
 
-#: app/Gateway.php:66
+#: app/Gateway.php:150
 msgid "Pay button on the checkout page"
 msgstr ""
 
-#: app/Gateway.php:55 app/Gateway.php:61
+#: app/Gateway.php:151
+msgid "Pay to Payeer"
+msgstr ""
+
+#: app/Gateway.php:139 app/Gateway.php:145
 msgid "Pay with Payeer"
 msgstr ""
 
 #. Name of the plugin
-msgid "Payeer for WooCommerce"
+msgid "Pay with Payeer for WooCommerce"
 msgstr ""
 
-#: app/Gateway.php:16 app/Gateway.php:17
-msgid "Payeer Gateway"
+#: app/Gateway.php:92
+msgid "Payeer"
 msgstr ""
 
-#: app/Callback.php:72
+#: app/Callback.php:77
 msgid "Payeer operation ID"
+msgstr ""
+
+#: app/Gateway.php:93
+msgid "Payeer payment gateway"
 msgstr ""
 
 #. Description of the plugin
 msgid "Payeer payment gateway for WooCommerce"
 msgstr ""
 
-#: app/Gateway.php:70
+#: app/Gateway.php:154
 msgid "Payment complete order status"
 msgstr ""
 
-#: app/Gateway.php:174
+#: app/Gateway.php:277
 msgid "Payment is awaited."
 msgstr ""
 
-#: app/Callback.php:114 app/Callback.php:116
+#: app/Callback.php:121 app/Callback.php:123
 msgid "Payment is failed!"
 msgstr ""
 
-#: app/Gateway.php:67
-msgid "Proceed to Payeer"
-msgstr ""
-
-#: app/Gateway.php:75
+#: app/Gateway.php:159
 msgid "Processing"
 msgstr ""
 
-#: app/Gateway.php:92
+#: app/Gateway.php:170
 msgid "Secret key"
 msgstr ""
 
-#: app/Gateway.php:94
+#: app/Gateway.php:172
 msgid ""
-"The secret key notification that payment has been made,<br/>which is used to "
-"check the integrity of received information<br/>and unequivocal "
-"identification of the sender.<br/>Must match the secret key specified in <a "
-"href=\"https://payeer.com/account/\">Payeer account</a>: the \"Account -> "
+"The secret key notification that payment has been made,which is used to "
+"check the integrity of received information and unequivocal identification "
+"of the sender. Must match the secret key specified in : the \"Account -> "
 "Merchant -> Settings\"."
 msgstr ""
 
-#: app/Gateway.php:72
+#: app/Gateway.php:156
 msgid "The status to apply for order after payment is complete."
 msgstr ""
 
-#: app/Gateway.php:60
+#: app/Gateway.php:144
 msgid "This controls the description which the user sees during checkout."
 msgstr ""
 
-#: app/Gateway.php:54
+#: app/Gateway.php:138
 msgid "This controls the title which the user sees during checkout."
 msgstr ""
 
-#: app/Gateway.php:52
+#: app/Gateway.php:136
 msgid "Title"
 msgstr ""
 
-#: app/Gateway.php:80
-msgid "URL of the merchant"
-msgstr ""
-
-#: app/Gateway.php:82
-msgid "url to payment system Payeer"
-msgstr ""
-
-#: app/Gateway.php:105
+#: app/Gateway.php:183
 msgid ""
 "You need to enter this URL in the \"Fail URL\" field in your merchant "
 "settings."
 msgstr ""
 
-#: app/Gateway.php:110
+#: app/Gateway.php:188
 msgid ""
 "You need to enter this URL in the \"Status URL\" field in your merchant "
 "settings."
 msgstr ""
 
-#: app/Gateway.php:100
+#: app/Gateway.php:178
 msgid ""
 "You need to enter this URL in the \"Success URL\" field in your merchant "
 "settings. "
 msgstr ""
 
-#: app/Callback.php:94
+#: app/Callback.php:100
 msgid "Your order is complete."
 msgstr ""
 
-#: app/Callback.php:96
+#: app/Callback.php:102
 msgid "Your order is processing."
 msgstr ""
