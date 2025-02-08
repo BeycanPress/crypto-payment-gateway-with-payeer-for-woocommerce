@@ -1,7 +1,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Pay with Payeer for WooCommerce\n"
+"Project-Id-Version: Crypto Payment Gateway with Payeer for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-01 08:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.7.1; wp-6.7.1\n"
-"X-Domain: pay-with-payeer-for-woocommerce"
+"X-Domain: crypto-payment-gateway-with-payeer-for-woocommerce"
 
 #. Author of the plugin
 msgid "BeycanPress"

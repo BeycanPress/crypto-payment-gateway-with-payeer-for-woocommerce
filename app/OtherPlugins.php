@@ -24,8 +24,8 @@ class OtherPlugins
         if (!isset($GLOBALS['admin_page_hooks']['beycanpress-plugins'])) {
             add_action('admin_menu', function () use ($pluginFile): void {
                 add_menu_page(
-                    esc_html__('BeycanPress Plugins', 'pay-with-payeer-for-woocommerce'),
-                    esc_html__('BeycanPress Plugins', 'pay-with-payeer-for-woocommerce'),
+                    esc_html__('BeycanPress Plugins', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
+                    esc_html__('BeycanPress Plugins', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
                     'manage_options',
                     'beycanpress-plugins',
                     [$this, 'page'],
@@ -54,7 +54,7 @@ class OtherPlugins
         ?>
         <div class="wrap">
             <h1 class="wp-heading-inline">
-                <?php echo esc_html__('BeycanPress Plugins', 'pay-with-payeer-for-woocommerce'); ?>
+                <?php echo esc_html__('BeycanPress Plugins', 'crypto-payment-gateway-with-payeer-for-woocommerce'); ?>
             </h1>
             <hr class="wp-header-end">
             <br>
@@ -73,7 +73,7 @@ class OtherPlugins
                                         </li>
                                     <?php endforeach;
                                 else :
-                                    echo esc_html__('No product found!', 'pay-with-payeer-for-woocommerce');
+                                    echo esc_html__('No product found!', 'crypto-payment-gateway-with-payeer-for-woocommerce');
                                 endif; ?>
                             </ul>
                         </div>

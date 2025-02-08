@@ -89,8 +89,8 @@ class Gateway extends \WC_Payment_Gateway
     public function __construct()
     {
         $this->id = self::ID;
-        $this->method_title = esc_html__('Payeer', 'pay-with-payeer-for-woocommerce');
-        $this->method_description = esc_html__('Payeer payment gateway', 'pay-with-payeer-for-woocommerce');
+        $this->method_title = esc_html__('Payeer', 'crypto-payment-gateway-with-payeer-for-woocommerce');
+        $this->method_description = esc_html__('Payeer payment gateway', 'crypto-payment-gateway-with-payeer-for-woocommerce');
 
         // gateways can support subscriptions, refunds, saved payment methods,
         // but in this tutorial we begin with simple payments
@@ -127,65 +127,65 @@ class Gateway extends \WC_Payment_Gateway
     {
         $this->form_fields = [
             'enabled' => [
-                'title'       => esc_html__('Enable/Disable', 'pay-with-payeer-for-woocommerce'),
-                'label'       => esc_html__('Enable', 'pay-with-payeer-for-woocommerce'),
+                'title'       => esc_html__('Enable/Disable', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
+                'label'       => esc_html__('Enable', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
                 'type'        => 'checkbox',
                 'default'     => 'no'
             ],
             'title' => [
-                'title'       => esc_html__('Title', 'pay-with-payeer-for-woocommerce'),
+                'title'       => esc_html__('Title', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
                 'type'        => 'text',
-                'description' => esc_html__('This controls the title which the user sees during checkout.', 'pay-with-payeer-for-woocommerce'),
-                'default'     => esc_html__('Pay with Payeer', 'pay-with-payeer-for-woocommerce')
+                'description' => esc_html__('This controls the title which the user sees during checkout.', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
+                'default'     => esc_html__('Pay with Payeer', 'crypto-payment-gateway-with-payeer-for-woocommerce')
             ],
             'description' => [
-                'title'       => esc_html__('Description', 'pay-with-payeer-for-woocommerce'),
+                'title'       => esc_html__('Description', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
                 'type'        => 'textarea',
-                'description' => esc_html__('This controls the description which the user sees during checkout.', 'pay-with-payeer-for-woocommerce'),
-                'default'     => esc_html__('Pay with Payeer', 'pay-with-payeer-for-woocommerce'),
+                'description' => esc_html__('This controls the description which the user sees during checkout.', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
+                'default'     => esc_html__('Pay with Payeer', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
             ],
             'order_button_text' => [
-                'title'       => esc_html__('Order button text', 'pay-with-payeer-for-woocommerce'),
+                'title'       => esc_html__('Order button text', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
                 'type'        => 'text',
-                'description' => esc_html__('Pay button on the checkout page', 'pay-with-payeer-for-woocommerce'),
-                'default'     => esc_html__('Pay to Payeer', 'pay-with-payeer-for-woocommerce'),
+                'description' => esc_html__('Pay button on the checkout page', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
+                'default'     => esc_html__('Pay to Payeer', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
             ],
             'payment_complete_order_status' => [
-                'title'   => esc_html__('Payment complete order status', 'pay-with-payeer-for-woocommerce'),
+                'title'   => esc_html__('Payment complete order status', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
                 'type'    => 'select',
-                'help'    => esc_html__('The status to apply for order after payment is complete.', 'pay-with-payeer-for-woocommerce'),
+                'help'    => esc_html__('The status to apply for order after payment is complete.', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
                 'options' => [
-                    'wc-completed' => esc_html__('Completed', 'pay-with-payeer-for-woocommerce'),
-                    'wc-processing' => esc_html__('Processing', 'pay-with-payeer-for-woocommerce')
+                    'wc-completed' => esc_html__('Completed', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
+                    'wc-processing' => esc_html__('Processing', 'crypto-payment-gateway-with-payeer-for-woocommerce')
                 ],
                 'default' => 'wc-completed',
             ],
             'payeer_merchant' => [
-                'title' => esc_html__('ID of the store', 'pay-with-payeer-for-woocommerce'),
+                'title' => esc_html__('ID of the store', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
                 'type' => 'text',
-                'description' => esc_html__('Identifier of store registered in the system "PAYEER" Get it in "Account -> Merchant -> Settings".', 'pay-with-payeer-for-woocommerce'),
+                'description' => esc_html__('Identifier of store registered in the system "PAYEER" Get it in "Account -> Merchant -> Settings".', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
                 'default' => ''
             ],
             'payeer_secret_key' => [
-                'title' => esc_html__('Secret key', 'pay-with-payeer-for-woocommerce'),
+                'title' => esc_html__('Secret key', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
                 'type' => 'password',
-                'description' => esc_html__('The secret key notification that payment has been made,which is used to check the integrity of received information and unequivocal identification of the sender. Must match the secret key specified in : the "Account -> Merchant -> Settings".', 'pay-with-payeer-for-woocommerce'),
+                'description' => esc_html__('The secret key notification that payment has been made,which is used to check the integrity of received information and unequivocal identification of the sender. Must match the secret key specified in : the "Account -> Merchant -> Settings".', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
                 'default' => ''
             ],
             'payeer_success_url' => [
                 'title'       => home_url('wc-api/bp-payeer-gateway-callback?action=success'),
                 'type'        => 'title',
-                'description' => esc_html__('You need to enter this URL in the "Success URL" field in your merchant settings. ', 'pay-with-payeer-for-woocommerce'),
+                'description' => esc_html__('You need to enter this URL in the "Success URL" field in your merchant settings. ', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
             ],
             'payeer_fail_url' => [
                 'title'       => home_url('wc-api/bp-payeer-gateway-callback?action=fail'),
                 'type'        => 'title',
-                'description' => esc_html__('You need to enter this URL in the "Fail URL" field in your merchant settings.', 'pay-with-payeer-for-woocommerce'),
+                'description' => esc_html__('You need to enter this URL in the "Fail URL" field in your merchant settings.', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
             ],
             'payeer_status_url' => [
                 'title'       => home_url('wc-api/bp-payeer-gateway-callback?action=status'),
                 'type'        => 'title',
-                'description' => esc_html__('You need to enter this URL in the "Status URL" field in your merchant settings.', 'pay-with-payeer-for-woocommerce'),
+                'description' => esc_html__('You need to enter this URL in the "Status URL" field in your merchant settings.', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
             ],
         ];
     }
@@ -273,7 +273,10 @@ class Gateway extends \WC_Payment_Gateway
             'm_sign' => $sign
         ]);
 
-        $order->update_status('wc-pending', esc_html__('Payment is awaited.', 'pay-with-payeer-for-woocommerce'));
+        $order->update_status(
+            'wc-pending',
+            esc_html__('Payment is awaited.', 'crypto-payment-gateway-with-payeer-for-woocommerce')
+        );
 
         $order->add_order_note(
             esc_html__(

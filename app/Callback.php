@@ -74,7 +74,7 @@ class Callback
             ])));
 
             $this->order->update_meta_data(
-                esc_html__('Payeer operation ID', 'pay-with-payeer-for-woocommerce'),
+                esc_html__('Payeer operation ID', 'crypto-payment-gateway-with-payeer-for-woocommerce'),
                 $operationId
             );
 
@@ -97,9 +97,9 @@ class Callback
 
         $completeStatus = Gateway::get_option_custom('payment_complete_order_status');
         if ('wc-completed' == $completeStatus) {
-            $note = esc_html__('Your order is complete.', 'pay-with-payeer-for-woocommerce');
+            $note = esc_html__('Your order is complete.', 'crypto-payment-gateway-with-payeer-for-woocommerce');
         } else {
-            $note = esc_html__('Your order is processing.', 'pay-with-payeer-for-woocommerce');
+            $note = esc_html__('Your order is processing.', 'crypto-payment-gateway-with-payeer-for-woocommerce');
         }
 
         $this->order->payment_complete();
@@ -118,9 +118,12 @@ class Callback
      */
     public function updateOrderAsFail(): void
     {
-        $this->order->update_status('wc-failed', esc_html__('Payment is failed!', 'pay-with-payeer-for-woocommerce'));
+        $this->order->update_status(
+            'wc-failed',
+            esc_html__('Payment is failed!', 'crypto-payment-gateway-with-payeer-for-woocommerce')
+        );
 
-        wc_add_notice(esc_html__('Payment is failed!', 'pay-with-payeer-for-woocommerce'), 'error');
+        wc_add_notice(esc_html__('Payment is failed!', 'crypto-payment-gateway-with-payeer-for-woocommerce'), 'error');
 
         wp_redirect(wc_get_checkout_url());
         exit();
