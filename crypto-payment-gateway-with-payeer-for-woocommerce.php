@@ -9,7 +9,7 @@ defined('ABSPATH') || exit;
 // @phpcs:disable Generic.Files.LineLength
 
 /**
- * Plugin Name: Pay with Payeer for WooCommerce
+ * Plugin Name: Crypto Payment Gateway with Payeer for WooCommerce
  * Version:     1.0.1
  * Plugin URI:  https://beycanpress.com/
  * Description: Payeer payment gateway for WooCommerce

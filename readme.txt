@@ -1,4 +1,4 @@
-=== Pay with Payeer for WooCommerce ===
+=== Crypto Payment Gateway with Payeer for WooCommerce ===
 Contributors: BeycanPress
 Tags: woocommerce, payment gateway, payeer, crypto, cryptocurrency
 Requires at least: 5.0
@@ -13,7 +13,7 @@ Pay with Payeer for WooCommerce, Payeer payment gateway, Cryptocurrency Payment 
 
 == Description ==
 
-**What is Pay with Payeer for WooCommerce**
+**Crypto Payment Gateway with Payeer for WooCommerce
 
 Payeer is a kind of online wallet where you can hold Crypto currencies along with FIAT currencies.
 
