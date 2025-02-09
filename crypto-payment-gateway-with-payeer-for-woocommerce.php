@@ -11,18 +11,19 @@ defined('ABSPATH') || exit;
 /**
  * Plugin Name: Crypto Payment Gateway with Payeer for WooCommerce
  * Version:     1.0.1
+ * Requires Plugins: woocommerce
  * Plugin URI:  https://beycanpress.com/
  * Description: Payeer payment gateway for WooCommerce
  * Author: BeycanPress
  * Author URI:  https://beycanpress.com
  * License:     GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain: pay-with-payeer-for-woocommerce
+ * Text Domain: crypto-payment-gateway-with-payeer-for-woocommerce
  * Domain Path: /languages
  * Tags: Payeer, Cryptocurrency, WooCommerce, Payment, Gateway
  * Requires at least: 5.0
  * Tested up to: 6.7.1
- * Requires PHP: 7.4
+ * Requires PHP: 8.1
 */
 
 require __DIR__ . '/vendor/autoload.php';

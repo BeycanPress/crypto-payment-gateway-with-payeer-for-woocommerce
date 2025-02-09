@@ -281,7 +281,7 @@ class Gateway extends \WC_Payment_Gateway
         $order->add_order_note(
             esc_html__(
                 'Customer has chosen Payeer payment method, payment is pending.',
-                'pay-with-payeer-for-woocommerce'
+                'crypto-payment-gateway-with-payeer-for-woocommerce'
             )
         );
 

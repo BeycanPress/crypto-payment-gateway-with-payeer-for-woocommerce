@@ -2,8 +2,8 @@
 Contributors: BeycanPress
 Tags: woocommerce, payment gateway, payeer, crypto, cryptocurrency
 Requires at least: 5.0
-Tested up to: 6.7.1
-Requires PHP: 7.4
+Tested up to: 6.7
+Requires PHP: 8.1
 Stable Tag: 1.0.1
 Version: 1.0.1
 License: GPLv3
@@ -39,13 +39,18 @@ With the default configuration, this plugin, in itself, does not:
 * track users by stealth;
 * send any data to external servers;
 
+= 3rd Party Libraries & API's =
+* https://beycanpress.com/
+    * Privacy policy: https://beycanpress.com/privacy-policy/
+    * This is our website. We use it to provide support and sell premium plugins.
+
 = Translations =
 
 You can easily translate with Loco translate.
 
 == Installation ==
 
-1. Upload the entire `/pay-with-payeer-for-woocommerce` directory to the `/wp-content/plugins/` directory.
+1. Upload the entire `/crypto-payment-gateway-with-payeer-for-woocommerce` directory to the `/wp-content/plugins/` directory.
 2. Activate Payeer for WooCommerce through the 'Plugins' menu in WordPress.
 3. Enjoy.
 
