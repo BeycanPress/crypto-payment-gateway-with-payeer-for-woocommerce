@@ -13,7 +13,7 @@ Pay with Payeer for WooCommerce, Payeer payment gateway, Cryptocurrency Payment 
 
 == Description ==
 
-**Crypto Payment Gateway with Payeer for WooCommerce
+### Crypto Payment Gateway with Payeer for WooCommerce
 
 Payeer is a very popular service, especially in Russia, which you can use as a wallet for both FIAT coins and cryptocurrencies. We use Payeer in many of our subsidiaries and that's why we developed this service as a WooCommerce payment gateway for WordPress and WooCommerce users to receive crypto payments.
 
