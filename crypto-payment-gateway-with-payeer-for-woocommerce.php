@@ -10,7 +10,7 @@ defined('ABSPATH') || exit;
 
 /**
  * Plugin Name: Crypto Payment Gateway with Payeer for WooCommerce
- * Version:     1.0.1
+ * Version:     1.0.2
  * Requires Plugins: woocommerce
  * Plugin URI:  https://beycanpress.com/
  * Description: Payeer payment gateway for WooCommerce
