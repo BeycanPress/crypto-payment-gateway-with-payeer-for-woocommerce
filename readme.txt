@@ -15,21 +15,17 @@ Pay with Payeer for WooCommerce, Payeer payment gateway, Cryptocurrency Payment 
 
 **Crypto Payment Gateway with Payeer for WooCommerce
 
-Payeer is a kind of online wallet where you can hold Crypto currencies along with FIAT currencies.
+Payeer is a very popular service, especially in Russia, which you can use as a wallet for both FIAT coins and cryptocurrencies. We use Payeer in many of our subsidiaries and that's why we developed this service as a WooCommerce payment gateway for WordPress and WooCommerce users to receive crypto payments.
 
-It also allows you to accept online payments thanks to the Payeer API. Thanks to our Payeer for WooCommerce plugin, you can start accepting payments via Payeer by simply entering your store ID and secret key.
+However, if you want to accept web3 cryptocurrency payments in general without being tied to a platform, you can also use our CryptoPay plugin for this.
+
+See: **<a href="https://beycanpress.com/cryptopay/?utm_source=payeer_wp_org_readme" target="_blank">CryptoPay</a>**
+
+See: **<a href="https://payeer.com/en/account/api/#tab-api-appearance" target="_blank">Payeer Merchant</a>**
 
 ### How to use
 
-* Your Payeer details. Just enter the Merchant (Store) id and secret key in the payment gateways settings as follows.
-
-![Settings](https://i.ibb.co/BqGGZG5/68747470733a2f2f692e68697a6c69726573696d2e636f6d2f626c78706b366b2e706e67.png)
-
-* What does the Payeer payment screen look like?
-
-![Payeer](https://i.ibb.co/1bdnFM7/68747470733a2f2f692e68697a6c69726573696d2e636f6d2f33797362366e662e706e67.png)
-
-See: **<a href="https://payeer.com/en/account/api/#tab-api-appearance" target="_blank">Payeer Merchant</a>**
+As you can see in the settings in the screenshots, as soon as you enter your merchant id and secret key, you can start using Payeer and accept crypto payments in your WooCommerce store.
 
 = Privacy notices =
 
