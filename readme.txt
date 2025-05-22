@@ -2,10 +2,10 @@
 Contributors: BeycanPress
 Tags: woocommerce, payment gateway, payeer, crypto, cryptocurrency
 Requires at least: 5.0
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 8.1
-Stable Tag: 1.0.2
-Version: 1.0.2
+Stable Tag: 1.0.3
+Version: 1.0.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -51,6 +51,9 @@ You can easily translate with Loco translate.
 3. Enjoy.
 
 == Changelog ==
+
+= 1.0.3 =
+* Check: compatibility with WordPress 6.8
 
 = 1.0.1 =
 * Plugin released.
